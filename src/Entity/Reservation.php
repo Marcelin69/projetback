@@ -26,6 +26,9 @@ class Reservation
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $datefin = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $reserve = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Reservation
     public function setDatefin(\DateTimeInterface $datefin): static
     {
         $this->datefin = $datefin;
+
+        return $this;
+    }
+
+    public function isReserve(): ?bool
+    {
+        return $this->reserve;
+    }
+
+    public function setReserve(?bool $reserve): static
+    {
+        $this->reserve = $reserve;
 
         return $this;
     }
