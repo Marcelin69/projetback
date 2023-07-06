@@ -1,0 +1,104 @@
+/* Variables **********/
+
+/* Coulors */
+:root {
+    --royal-blue-web-color: rgba(33, 107, 233, 1);
+    --eerie-black: rgba(37, 37, 37, 1);
+    --seasalt: rgba(249, 249, 249, 1);
+    --french-rose: rgba(248, 61, 117, 1);
+}
+
+/* Gradient */
+:root {
+    --gradient-top: linear-gradient(0deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-right: linear-gradient(90deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-bottom: linear-gradient(180deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-left: linear-gradient(270deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-top-right: linear-gradient(45deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-bottom-right: linear-gradient(135deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-top-left: linear-gradient(225deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-bottom-left: linear-gradient(315deg, #216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+    --gradient-radial: radial-gradient(#216be9ff, #252525ff, #f9f9f9ff, #f83d75ff);
+}
+
+/* EasyAdmin */
+:root {
+    /* make the backend contents as wide as the browser window */
+    --body-max-width: 100%;
+    /* change the background color of the <body> */
+    --body-bg: #ffffff;
+    /* make the base font size smaller */
+    --font-size-base: 16px;
+    /* remove all border radius to make corners straight */
+    --border-radius: 1vw;
+}
+
+/* Fonts */
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+}
+
+.transition-fade {
+    transition: 0.4s;
+    opacity: 1;
+}
+
+html.is-animating .transition-fade {
+    opacity: 0;
+}
+
+
+.login-box {
+    width: 30rem;
+    padding: 40px;
+    margin-top: 5rem;
+    background:var(--seasalt);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.09);
+    border-radius: 10px;
+  }
+  
+ 
+  
+  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+  }
+  .user-box-input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+  }
+  
+  .login-box .user-box label {
+    font-size: 16px;
+    color: var(--royal-blue-web-color);
+    pointer-events: none;
+    transition: .5s;
+    font-weight: 400;
+  }
+  
+ 
+   
+   
+ 
