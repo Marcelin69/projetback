@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegistrationController!{% endblock %}
+
+{% block body %}
+{{ dump(formulair) }}
+
+<div class="container login-box">
+
+		<h1 class="h3 mb-3 font-weight-normal">Créer un compte</h1>
+        {{ form_start(formulair) }}
+            {{ form_row(formulair.nom, {
+                label: 'Nom',
+                attr: {
+                    placeholder: 'Nom',
+                    class: 'form-control user-box-input'
+                }
+            }) }}
+            {{ form_row(formulair.prenom, {
+                label: 'Prénom',
+                attr: {
+                    placeholder: 'Prenom',
+                    class: 'form-control user-box-input'
+                }
+            }) }}
+            {{ form_row(formulair.email, {
+                label: 'Email',
+                attr: {
+                    placeholder: 'adresse@email.com',
+                    class: 'form-control user-box-input'
+                }
+            }) }}
+            {{ form_row(formulair.password, {
+                label: 'Mot de passe',
+                attr: {
+                    placeholder: 'Mot de passe',
+                    class: 'form-control user-box-input'
+                }
+            }) }}
+           
+
+            <button type="submit" class="btn btn-lg btn-primary mt-2">Inscription</button>
+        {{ form_end(formulair) }}
+    </div>
+
+{% endblock %}
