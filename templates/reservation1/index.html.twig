@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReservationController!{% endblock %}
+
+{% block body %}
+  <div class="container login-box">
+		<h1 class="h3 mb-3 font-weight-normal">Effectuer ma resevation</h1>
+        {{ form_start(reserveform) }}
+            {{ form_row(reserveform.salle, {
+                label: 'Salle',
+                attr: {
+                    placeholder: 'selectionner votre salle',
+                    class: 'form-control ',
+                    value: salle ? salle.nom : ""
+
+                }
+            }) }}
+            {{ form_row(reserveform.utilisateur, {
+                label: 'nom de servation',
+                attr: {
+                    placeholder: 'nom',
+                    class: 'form-control ',
+                    value: app.user ? app.user.nom : ""  
+
+                }
+            }) }}
+            {{ form_row(reserveform.datedebut, {
+                label: 'Date de debuit',
+                attr: {
+                    placeholder: 'Date de debuit',
+                    class: 'form-control '
+                }
+            }) }}
+            {{ form_row(reserveform.datefin, {
+                label: 'Date de fin',
+                attr: {
+                    placeholder: 'Date de fin',
+                    class: 'form-control '
+                }
+            }) }}
+           
+
+            <button type="submit" class="btn btn-lg btn-primary mt-2">Reserver</button>
+        {{ form_end(reserveform) }}
+    </div>
+{% endblock %}

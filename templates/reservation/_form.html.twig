@@ -1,0 +1,35 @@
+
+{{ form_start(form) }}
+      {{ form_row(form.salle, {
+                label: 'Salle',
+                attr: {
+                    placeholder: 'selectionner votre salle',
+                    class: 'form-control ',
+                   selected:"selected"
+
+                }
+            }) }}
+             {{ form_row(form.utilisateur, {
+                label: 'nom de reservation',
+                attr: {
+                    placeholder: 'nom',
+                    class: 'form-control ',
+
+                }
+            }) }}
+            {{ form_row(form.datedebut, {
+                label: 'Date de debuit',
+                attr: {
+                    placeholder: 'Date de debuit',
+                    class: 'form-control '
+                }
+            }) }}
+            {{ form_row(form.datefin, {
+                label: 'Date de fin',
+                attr: {
+                    placeholder: 'Date de fin',
+                    class: 'form-control '
+                }
+            }) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
