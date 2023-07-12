@@ -1,0 +1,6 @@
+<h1>comfimer mon compte</h1>
+<p>Bonjour {{user.prenom }}</p>
+<p>pour mieux utiliser nos serrvice nous vous inviton a confirmer votre email el cliquant sur le lient ci-dessou</p>
+ <a href="{{ signedUrl|raw }}">Confirm my Email</a>.
+    This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>

@@ -4,6 +4,7 @@ namespace App\Form;
 use DateTime;
 use App\Entity\User;
 use App\Entity\Salle;
+use DateTimeImmutable;
 use App\Entity\Reservation;
 use Doctrine\ORM\QueryBuilder;
 use App\Repository\SalleRepository;
@@ -19,7 +20,8 @@ class Reservation1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        
+         
+        // $now = new DateTimeImmutable();
       
     
         $builder
@@ -48,7 +50,8 @@ class Reservation1Type extends AbstractType
             
         ])
         ->add('datedebut',DateType::class,[
-        //    'datedebut'=>$currentDate
+        
+        // "attr"=>["value"=>$now->getTimestamp()],
         ])
         ->add('datefin',DateType::class,[
            

@@ -5,38 +5,39 @@
 
 {% block body %}
 	<div class="container py-3">
-	
-		{{ dump(salles) }}
-			<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-				<h1 class="display-4 fw-normal text-body-emphasis">Présentation</h1>
-				<p class="fs-5 text-body-secondary">Découvrez notre sélection de salles de conférence modernes et fonctionnelles, idéales pour vos réunions, conférences et formations. Avec un mobilier ergonomique, un équipement technologique avancé comprenant des rétroprojecteurs, des écrans LCD et des tableaux interactifs, ainsi que des logiciels intégrés pour la vidéoconférence, le partage d'écran et la gestion des tâches, nos salles offrent un environnement professionnel propice à la productivité. Qu'il s'agisse d'une petite réunion ou d'une grande conférence, nos salles peuvent accueillir de 10 à 30 personnes. Réservez dès maintenant et offrez à vos participants une expérience de réunion réussie dans un cadre moderne et confortable.</p>
-			</div>
+		<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+			<h1 class="display-4 fw-normal text-body-emphasis">Présentation</h1>
+			<p class="fs-5 text-body-secondary">Découvrez notre sélection de salles de conférence modernes et fonctionnelles, idéales pour vos réunions, conférences et formations. Avec un mobilier ergonomique, un équipement technologique avancé comprenant des rétroprojecteurs, des écrans LCD et des tableaux interactifs, ainsi que des logiciels intégrés pour la vidéoconférence, le partage d'écran et la gestion des tâches, nos salles offrent un environnement professionnel propice à la productivité. Qu'il s'agisse d'une petite réunion ou d'une grande conférence, nos salles peuvent accueillir de 10 à 30 personnes. Réservez dès maintenant et offrez à vos participants une expérience de réunion réussie dans un cadre moderne et confortable.</p>
+		</div>
 
 		<main>
 			<div class=" container  mb-3 ms-5 ">
-				<div class="d-flex flex-wrap ms-5" >
+				<div class="d-flex flex-wrap ms-5">
 					{% for item in salles %}
 						<div class="card m-4 p-2 rounded-3 shadow-sm">
 							<div class="card-header py-3 text-center">
 								<h4 class="my-0 fw-normal">{{item.nom }}</h4>
 							</div>
 							<div class="card-body " style="width:25rem">
-          
-                                 <span class="fw-bold text-decoration-underline">Ergonomie </span>
+
+								<span class="fw-bold text-decoration-underline">Ergonomie
+								</span>
 								<ul class="list-unstyled mt-3 mb-4">
 
 									{% for ergo in item.ergonomie %}
 										<li>{{ergo.description }}</li>
 									{% endfor %}
 								</ul>
-                                 <span class="fw-bold text-decoration-underline">Materiel </span>
+								<span class="fw-bold text-decoration-underline">Materiel
+								</span>
 								<ul class="list-unstyled mt-3 mb-4">
 
 									{% for mart in item.materiel %}
 										<li>{{mart.description }}</li>
 									{% endfor %}
 								</ul>
-                                 <span class="fw-bold text-decoration-underline">Logiciel </span>
+								<span class="fw-bold text-decoration-underline">Logiciel
+								</span>
 								<ul class="list-unstyled mt-3 mb-4">
 
 									{% for log in item.logiciel %}
@@ -44,26 +45,27 @@
 									{% endfor %}
 								</ul>
 
-								{# {% if is_granted('AUTHENTICATED_FULLY')  %} #}
-								{# <form action="post"></form> #}
-								<a href={{ path('app_reservation_new', {'id': item.id}) }}>
+
+								{% if app.user == true and app.user.isVerified == true  %}
+									<a href={{ path('app_reservation_new', {'id': item.id} ) }}>
 										<button type="button" class="w-100 btn btn-lg btn-outline-primary">Reserver la salle</button>
 									</a>
-								{# {% else %} #}
+
+								{% else %}
+
 									<a href={{ asset('/login') }}>
 										<button type="button" class="w-100 btn btn-lg btn-outline-primary">Connecter pour reserver</button>
 									</a>
-
-								{# {% endif %} #}
+								{% endif %}
 							</div>
 						</div>
 					{% endfor %}
 				</div>
 			</div>
 
-										
+
 		</main>
 
-		
+
 	</div>
 {% endblock %}

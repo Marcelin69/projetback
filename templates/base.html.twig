@@ -26,10 +26,11 @@
 				</a>
 
 				<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/register') }}>Incription</a>
-					<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/login') }}>Connexion</a>
-					{% if  is_granted('AUTHENTICATED_FULLY')  %}
+					{% if app.user == true %}
 						<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/logout') }}>Deconnexion</a>
+					{% else %}
+						<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/register') }}>Incription</a>
+						<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/login') }}>Connexion</a>
 					{% endif %}
 					<a class="py-2 link-body-emphasis text-decoration-none" href="#">Contacté nous</a>
 				</nav>
@@ -37,13 +38,18 @@
 
 
 		</header>
+		{% if app.user == true and app.user.isVerified == false  %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				<strong>Confirmer votre mail avec le lien qui est envoyer a votre adresse mail!</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
 		{% block body %}{% endblock %}
 
 		<footer class="pt-4 my-md-5 pt-md-5 border-top">
 			<div class="row">
-				<div
-					class="col-12 col-md">
-					{# <img class="mb-2" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19"> #}
+				<div class="col-12 col-md">
+
 					<small class="d-block mb-3 text-body-secondary">
 						<span class="fs-4">Marza<span>Location</span>
 						</span>
