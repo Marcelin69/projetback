@@ -1,0 +1,11 @@
+.content-body{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .titre-colunm{
+    font-size: 12px;
+  }
+  .span{
+    font-weight: bold;
+  }

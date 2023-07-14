@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Salle;
 use App\Controller\Admin\LogicielCrudController;
 use App\Controller\Admin\MaterielCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use App\Controller\Admin\ErgonomieCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -17,6 +18,14 @@ class SalleCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Salle::class;
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+             ->setEntityLabelInPlural('Salles')
+             ->setEntityLabelInSingular('Salle')
+             ->setPageTitle("index","SymRecipe-Adminstration des Salles")
+             ;
     }
 
     public function configureFields(string $pageName): iterable

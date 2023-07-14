@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Entity\Salle;
 use App\Entity\Reservation;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -17,7 +18,14 @@ class ReservationCrudController extends AbstractCrudController
     {
         return Reservation::class;
     }
-
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+             ->setEntityLabelInPlural('Reservations')
+             ->setEntityLabelInSingular('Reservation')
+             ->setPageTitle("index","SymRecipe-Adminstration des Reservations")
+             ;
+    }
     
     public function configureFields(string $pageName): iterable
     {

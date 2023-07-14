@@ -21,37 +21,19 @@ class Reservation1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
          
-        // $now = new DateTimeImmutable();
+        $now = new DateTimeImmutable();
       
-    
+
         $builder
-        ->add('salle',EntityType::class,[
-            "label" =>"Salle",
-            "required"=>true,
-            "attr"=>["class"=>"form-control"],
-            "class"=>Salle::class,
-            // 'query_builder' => function (SalleRepository $er)/* use($salleid) */{
-            //     $lolo=$er->Salle::class($salleid);
-            //     return $er->createQueryBuilder()
-            //             -> select('*')
-            //             ->from('salle','s')
-            //             ->where('m.id','IS', $lolo)
-
-            //         ->orderBy('u.nom', 'ASC');
-                    
-
-            // },
-        ])
-        ->add('utilisateur',EntityType::class,[
-            "label" =>"Salle",
-            "required"=>true,
-            "attr"=>["class"=>"form-control"],
-            "class"=>User::class,
-            
-        ])
+        // ->add('salle',TextType::class,[
+        //     "label" =>"Salle",
+        //     "required"=>true,
+        //     "attr"=>["class"=>"form-control"],
+           
+        // ])
         ->add('datedebut',DateType::class,[
         
-        // "attr"=>["value"=>$now->getTimestamp()],
+        "attr"=>["value"=>$now->getTimestamp()],
         ])
         ->add('datefin',DateType::class,[
            
