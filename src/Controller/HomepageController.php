@@ -18,11 +18,13 @@ class HomepageController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
     public function index(
-        SalleRepository $salle
+        SalleRepository $salle,
+        Request $req,
     ): Response {
         $salles = $salle->findAll();
         return $this->render('homepage/index.html.twig', [
             'salles' => $salles,
+            'alert'=> $req->get('alert')
         ]);
     }
     #[Route('/salle', name: 'reschercher')]

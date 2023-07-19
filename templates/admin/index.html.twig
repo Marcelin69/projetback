@@ -37,47 +37,48 @@
 		</div>
 	</div>
 
-	<div class="content-body contenair ms-4">
+	<div class=" contenair  ms-4">
+		<div class="content-body ms-4">
+			{% for item in utilisateurs %}
 
-		{% for item in utilisateurs %}
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">{{item.nom}}
+							{{item.prenom}}</h5>
+						<p>
+							<span class="span">Mail:</span>
+							{{item.email}}</p>
+						{# <h5 class="card-title">{{item.}}</h5> #}
 
-			<div class="card" style="width: 18rem;">
-				<div class="card-body">
-					<h5 class="card-title">{{item.nom}}
-						{{item.prenom}}</h5>
-					<p>
-						<span class="span">Mail:</span>
-						{{item.email}}</p>
-					{# <h5 class="card-title">{{item.}}</h5> #}
+						<p class="card-text">
+							{% for reserv in item.reservations %}
 
-					<p class="card-text">
-						{% for reserv in item.reservations %}
+								<p>
+									<span class="span">Les salles réservées:</span>
+									{{reserv }}
+								</p>
+								<p>
+									<span class="span">Date de réservation:</span>
+									{{reserv.datereservation|date('d/m/Y')}}
+								</p>
+								{% set datelocation = reserv.datereservation|date_modify('+5 day')  %}
+								{% set mod = datelocation|date('d/m/Y')%}
+								{% set date ="now"|date('d/m/Y') %}
 
-							<p>
-								<span class="span">Les salles réservées:</span>
-								{{reserv }}
-							</p>
-							<p>
-								<span class="span">Date de réservation:</span>
-								{{reserv.datereservation|date('d/m/Y')}}
+								{% if reserv.reserve == null and mod <=  date %}
+									<div class="alert alert-danger" role="alert">
+										Réservation en attente
+									</div>
+								{% endif %}
 
-							</p>
-							{% set datelocation = reserv.datereservation|date_modify('+5 day')  %}
-							{% set mod = datelocation|date('d/m/Y')%}
-							{% set date ="now"|date('d/m/Y') %}
-							{% if reserv.reserve == null and mod ==  date %}
-								<div class="alert alert-danger" role="alert">
-									Réservation en attente
-								</div>
-							{% endif %}
+							{% endfor %}
 
-						{% endfor %}
+						</p>
 
 					</p>
-
-				</p>
+				</div>
 			</div>
-		</div>
-	{% endfor %}
+		{% endfor %}
+	</div>
 
 </div>{% endblock %}

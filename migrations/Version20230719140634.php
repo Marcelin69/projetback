@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230710111422 extends AbstractMigration
+final class Version20230719140634 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -23,7 +23,7 @@ final class Version20230710111422 extends AbstractMigration
         $this->addSql('CREATE TABLE ergonomie (id INT AUTO_INCREMENT NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE logiciel (id INT AUTO_INCREMENT NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE materiel (id INT AUTO_INCREMENT NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE reservation (id INT AUTO_INCREMENT NOT NULL, salle_id INT DEFAULT NULL, utilisateur_id INT DEFAULT NULL, datedebut DATE NOT NULL, datefin DATE NOT NULL, reserve TINYINT(1) DEFAULT NULL, INDEX IDX_42C84955DC304035 (salle_id), INDEX IDX_42C84955FB88E14F (utilisateur_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE reservation (id INT AUTO_INCREMENT NOT NULL, salle_id INT DEFAULT NULL, utilisateur_id INT DEFAULT NULL, datedebut DATE NOT NULL, datefin DATE NOT NULL, reserve TINYINT(1) DEFAULT NULL, datereservation DATETIME NOT NULL, INDEX IDX_42C84955DC304035 (salle_id), INDEX IDX_42C84955FB88E14F (utilisateur_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE salle (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, capacite VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE salle_ergonomie (salle_id INT NOT NULL, ergonomie_id INT NOT NULL, INDEX IDX_C230D62FDC304035 (salle_id), INDEX IDX_C230D62FD0A4FB17 (ergonomie_id), PRIMARY KEY(salle_id, ergonomie_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE salle_logiciel (salle_id INT NOT NULL, logiciel_id INT NOT NULL, INDEX IDX_30113192DC304035 (salle_id), INDEX IDX_30113192CA84195D (logiciel_id), PRIMARY KEY(salle_id, logiciel_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
