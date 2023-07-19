@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rechercher ma salle
+{% endblock %}
+
+{% block body %}
+  <div class="container login-box">
+	
+	<h1>Rechercher votre salle</h1>
+
+
+	<form action="/resulta"  methode="GET" >
+
+		{# <select class="form-select mb-2 mt-3" name="salle" aria-label="Default select example">
+			<option  selected class="disabled">Salle</option>
+			{% for item in salles %}
+				<option  value={{item.id }}>{{item.nom }}</option>
+			{% endfor %}
+
+		</select> #}
+		<select name="ergonomie" class="form-select mb-3 mt-3" aria-label="Default select example">
+			<option selected>Ergonomie</option>
+			{% for item in ergos %}
+				<option  value={{item.id }}>{{item.description }}</option>
+			{% endfor %}
+		</select>
+		<select name="materiel" class="form-select mb-2 mt-3" aria-label="Default select example">
+			<option selected>Materiel</option>
+			{% for item in materiels %}
+				<option  value={{item.id }}>{{item.description }}</option>
+			{% endfor %}
+
+		</select>
+		<select name="logiciel" class="form-select mb-2 mt-3" aria-label="Default select example">
+			<option selected>Logiciel</option>
+			{% for item in logs %}
+				<option  value={{item.id }}>{{item.description }}</option>
+			{% endfor %}
+
+		</select>
+		
+		<button type="submit" class="btn btn-primary">Rechercher</button>
+	</form>
+
+</div>
+	<a href="{{ path('homepage') }}">Retour</a>
+{% endblock %}

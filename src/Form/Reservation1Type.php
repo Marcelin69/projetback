@@ -25,12 +25,7 @@ class Reservation1Type extends AbstractType
       
 
         $builder
-        // ->add('salle',TextType::class,[
-        //     "label" =>"Salle",
-        //     "required"=>true,
-        //     "attr"=>["class"=>"form-control"],
-           
-        // ])
+       
         ->add('datedebut',DateType::class,[
         
         "attr"=>["value"=>$now->getTimestamp()],

@@ -5,39 +5,34 @@
 
 {% block page_content %}
 
-	{{ dump(reservation[0].datereservation) }}
-	{% set date =(reservation[0].datereservation)  %}
-	{# {% set dateformat = date->format('d/m/y')  %} #}
-
-	{# {{dateformat }} #}
 
 	<div class="container text-center">
 		<div class="row">
 			<div class="col">
-				<div>
-					<h3>
-						Nombre de salle
 
-					</h3>
+
+				<div class="card">
+					<h5 class="card-header t_heder fs-4">Nombre de salles</h5>
+					<div class="card-body">
+						<p class="card-text fs-1 fw-bold">{{ salles}}</p>
+					</div>
 				</div>
-				<div>{{ salles}}</div>
 			</div>
 			<div class="col">
-				<div>
-					<h3>
-						Nombre de reservation
-					</h3>
+				<div class="card">
+					<h5 class="card-header t_heder fs-4">Nombre de réservations</h5>
+					<div class="card-body">
+						<p class="card-text fs-1 fw-bold">{{reservations}}</p>
+					</div>
 				</div>
-				<div>{{reservations}}</div>
 			</div>
 			<div class="col">
-
-				<div>
-					<h3>
-						Reservation accepter
-					</h3>
+				<div class="card">
+					<h5 class="card-header t_heder fs-4">Réservation acceptée</h5>
+					<div class="card-body">
+						<p class="card-text fs-1 fw-bold">{{ accepter}}</p>
+					</div>
 				</div>
-				<div>{{ accepter}}</div>
 			</div>
 		</div>
 	</div>
@@ -50,33 +45,39 @@
 				<div class="card-body">
 					<h5 class="card-title">{{item.nom}}
 						{{item.prenom}}</h5>
-					<p> <span class="span">Mail:</span>
+					<p>
+						<span class="span">Mail:</span>
 						{{item.email}}</p>
 					{# <h5 class="card-title">{{item.}}</h5> #}
+
 					<p class="card-text">
 						{% for reserv in item.reservations %}
 
 							<p>
-								<span class="span">les salle reserver:</span>
+								<span class="span">Les salles réservées:</span>
 								{{reserv }}
 							</p>
-						{% endfor %}
-
-					</p>
-					<p class="card-text">
-						{% for reserv in item.reservations %}
 							<p>
-								<span class="span">Date reserver:</span>
-								{# {{reserv.datereservation}} #}
+								<span class="span">Date de réservation:</span>
+								{{reserv.datereservation|date('d/m/Y')}}
+
 							</p>
+							{% set datelocation = reserv.datereservation|date_modify('+5 day')  %}
+							{% set mod = datelocation|date('d/m/Y')%}
+							{% set date ="now"|date('d/m/Y') %}
+							{% if reserv.reserve == null and mod ==  date %}
+								<div class="alert alert-danger" role="alert">
+									Réservation en attente
+								</div>
+							{% endif %}
+
 						{% endfor %}
 
 					</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
+
+				</p>
 			</div>
-		{% endfor %}
+		</div>
+	{% endfor %}
 
-	</div>
-
-{% endblock %}
+</div>{% endblock %}

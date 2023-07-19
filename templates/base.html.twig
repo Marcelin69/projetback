@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<header>
-			<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+			<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom mt-2">
 				<a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
 					<span class="fs-4">Marza<span>Location</span>
 					</span>
@@ -27,20 +27,27 @@
 
 				<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
 					{% if app.user == true %}
+						<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ path('reserv', {'id': app.user.id} ) }}>Voir mes salles</a>
 						<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/logout') }}>Deconnexion</a>
+					<a class="py-2 me-3 link-body-emphasis text-decoration-none" href={{ asset('/salle') }}>Rechercher ma salle</a>
+
 					{% else %}
 						<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/register') }}>Incription</a>
 						<a class="me-3 py-2 link-body-emphasis text-decoration-none" href={{ asset('/login') }}>Connexion</a>
 					{% endif %}
-					<a class="py-2 link-body-emphasis text-decoration-none" href="#">Contacté nous</a>
+					<a class="py-2 link-body-emphasis text-decoration-none" href="#">Contactez nous</a>
+					
 				</nav>
 			</div>
 
-
+{# <form class="d-flex ms-2" action="/" role="search">
+						<input class="form-control " type="search" name="salle" placeholder="Search" aria-label="Search">
+						<button class="btn " type="submit">Rechercher</button>
+					</form> #}
 		</header>
 		{% if app.user == true and app.user.isVerified == false  %}
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
-				<strong>Confirmer votre mail avec le lien qui est envoyer a votre adresse mail!</strong>
+				<strong>Confirmer votre mail avec le lien qui est envoyer à votre adresse mail!</strong>
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		{% endif %}

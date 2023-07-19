@@ -37,7 +37,7 @@ class ReservationController extends AbstractController
             $reservationRepository->save($reservation, true);
 
 
-            return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('reservation/new.html.twig', [
